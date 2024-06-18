@@ -17,3 +17,5 @@ echo "-----> Setting up ClamAV database"
 mkdir -p $BUILD_DIR/.heroku/clamavdb
 curl -L -o $BUILD_DIR/.heroku/clamavdb/main.cvd http://database.clamav.net/main.cvd
 curl -L -o $BUILD_DIR/.heroku/clamavdb/daily.cvd http://database.clamav.net/daily.cvd
+
+echo "export LD_LIBRARY_PATH=$BUILD_DIR/.heroku/clamav/lib:$LD_LIBRARY_PATH" > $BUILD_DIR/.profile.d/clamav.sh
