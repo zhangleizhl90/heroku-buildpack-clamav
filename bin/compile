@@ -28,7 +28,7 @@ mkdir $BUILD_DIR/.profile.d
 echo "export LD_LIBRARY_PATH=/app/.heroku/clamav/lib:$LD_LIBRARY_PATH" > $BUILD_DIR/.profile.d/clamav.sh
 
 
-cat <<EOT > /app/.heroku/clamav/etc/clamd.conf
+cat <<EOT > $BUILD_DIR/.heroku/clamav/etc/clamd.conf
 LogFile /dev/stdout
 LogTime yes
 LogClean yes
