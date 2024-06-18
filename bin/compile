@@ -11,12 +11,16 @@ curl -L -o clamav.deb https://www.clamav.net/downloads/production/clamav-1.3.1.l
 ar x clamav.deb
 tar -xvf data.tar.gz -C $BUILD_DIR/.heroku/clamav
 
-mv $BUILD_DIR/.heroku/clamav/usr/local/* $BUILD_DIR/.heroku/clamav/
-
 echo "-----> Setting up ClamAV database"
 mkdir -p $BUILD_DIR/.heroku/clamavdb
-curl -L -o $BUILD_DIR/.heroku/clamavdb/main.cvd http://database.clamav.net/main.cvd
-curl -L -o $BUILD_DIR/.heroku/clamavdb/daily.cvd http://database.clamav.net/daily.cvd
+
+cat <<EOT > $BUILD_DIR/.heroku/clamav/usr/local/etc/freshclam.conf
+DatabaseMirror database.clamav.net
+DatabaseDirectory $BUILD_DIR/.heroku/clamavdb
+EOT
+$BUILD_DIR/.heroku/clamav/usr/local/bin/freshclam --config-file=$BUILD_DIR/.heroku/clamav/usr/local/etc/freshclam.conf
+
+mv $BUILD_DIR/.heroku/clamav/usr/local/* $BUILD_DIR/.heroku/clamav/
 
 mkdir $BUILD_DIR/.profile.d
 echo "export LD_LIBRARY_PATH=/app/.heroku/clamav/lib:$LD_LIBRARY_PATH" > $BUILD_DIR/.profile.d/clamav.sh
