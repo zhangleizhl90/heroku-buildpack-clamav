@@ -1,2 +1,6 @@
 #!/usr/bin/env bash
-echo "ClamAV installed"
+cat <<EOF
+---
+default_process_types:
+  web: echo "ClamAV installed"
+EOF
