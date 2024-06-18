@@ -19,4 +19,4 @@ curl -L -o $BUILD_DIR/.heroku/clamavdb/main.cvd http://database.clamav.net/main.
 curl -L -o $BUILD_DIR/.heroku/clamavdb/daily.cvd http://database.clamav.net/daily.cvd
 
 mkdir $BUILD_DIR/.profile.d
-echo "export LD_LIBRARY_PATH=$BUILD_DIR/.heroku/clamav/lib:$LD_LIBRARY_PATH" > $BUILD_DIR/.profile.d/clamav.sh
+echo "export LD_LIBRARY_PATH=/app/.heroku/clamav/lib:$LD_LIBRARY_PATH" > $BUILD_DIR/.profile.d/clamav.sh
