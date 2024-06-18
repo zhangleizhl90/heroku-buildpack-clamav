@@ -14,6 +14,8 @@ tar -xvf data.tar.gz -C $BUILD_DIR/.heroku/clamav
 echo "-----> Setting up ClamAV database"
 mkdir -p $BUILD_DIR/.heroku/clamavdb
 
+export LD_LIBRARY_PATH=$BUILD_DIR/.heroku/clamav/lib:$LD_LIBRARY_PATH
+
 cat <<EOT > $BUILD_DIR/.heroku/clamav/usr/local/etc/freshclam.conf
 DatabaseMirror database.clamav.net
 DatabaseDirectory $BUILD_DIR/.heroku/clamavdb
