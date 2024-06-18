@@ -26,3 +26,12 @@ mv $BUILD_DIR/.heroku/clamav/usr/local/* $BUILD_DIR/.heroku/clamav/
 
 mkdir $BUILD_DIR/.profile.d
 echo "export LD_LIBRARY_PATH=/app/.heroku/clamav/lib:$LD_LIBRARY_PATH" > $BUILD_DIR/.profile.d/clamav.sh
+
+
+cat <<EOT > /app/.heroku/clamav/etc/clamd.conf
+LogFile /dev/stdout
+LogTime yes
+LogClean yes
+DatabaseDirectory /app/.heroku/clamavdb
+LocalSocket /app/.heroku/clamav/clamd.socket
+EOT
