@@ -34,4 +34,6 @@ LogTime yes
 LogClean yes
 DatabaseDirectory /app/.heroku/clamavdb
 LocalSocket /app/.heroku/clamav/clamd.socket
+TCPSocket 3310
+TCPAddr 127.0.0.1
 EOT
