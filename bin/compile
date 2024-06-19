@@ -23,6 +23,7 @@ EOT
 $BUILD_DIR/.heroku/clamav/usr/local/bin/freshclam --config-file=$BUILD_DIR/.heroku/clamav/usr/local/etc/freshclam.conf
 
 mv $BUILD_DIR/.heroku/clamav/usr/local/* $BUILD_DIR/.heroku/clamav/
+chmod a+x $BUILD_DIR/.heroku/clamav/sbin/*
 
 if [ ! -d $BUILD_DIR/.profile.d ]; then
     mkdir $BUILD_DIR/.profile.d
