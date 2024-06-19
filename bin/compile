@@ -35,6 +35,5 @@ LogFile /dev/stdout
 LogTime yes
 LogClean yes
 DatabaseDirectory /app/.heroku/clamavdb
-TCPSocket 3310
-TCPAddr 0.0.0.0
+LocalSocket /app/.heroku/clamav/clamd.socket
 EOT

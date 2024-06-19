@@ -3,5 +3,4 @@ cat <<EOF
 ---
 default_process_types:
   web: python app.py
-  clamd: /app/.heroku/clamav/sbin/clamd --config-file=/app/.heroku/clamav/etc/clamd.conf
 EOF
