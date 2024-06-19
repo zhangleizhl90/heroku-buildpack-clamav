@@ -24,7 +24,9 @@ $BUILD_DIR/.heroku/clamav/usr/local/bin/freshclam --config-file=$BUILD_DIR/.hero
 
 mv $BUILD_DIR/.heroku/clamav/usr/local/* $BUILD_DIR/.heroku/clamav/
 
-mkdir $BUILD_DIR/.profile.d
+if [ ! -d $BUILD_DIR/.profile.d ]; then
+    mkdir $BUILD_DIR/.profile.d
+fi
 echo "export LD_LIBRARY_PATH=/app/.heroku/clamav/lib:$LD_LIBRARY_PATH" > $BUILD_DIR/.profile.d/clamav.sh
 
 
